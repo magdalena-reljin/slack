@@ -1,0 +1,13 @@
+name: Sending a slack message
+on:
+  push:
+    branches: [ main, develop ]
+
+jobs:
+  sendnotification:
+    runs-on: ubuntu-latest
+    steps:
+    - name: send
+    - run:  |
+        curl -X POST -H 'Content-type: application/json'
+        --data '{"text":"uspeli smo!"}' ${{ secrets.SLACK_SECRET }}
