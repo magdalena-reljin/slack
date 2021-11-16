@@ -40,5 +40,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: |
-         curl -X POST -H 'Content-type: application/json' --data '{"text":"New pull request. REPOSITORY: ${{ github.event.repository.name }} "}' ${{ secrets.SLACK_SECRET }}
+         curl -X POST -H 'Content-type: application/json' --data '{"text":"New pull request. ${{ github.event.sender.login.id }} REPOSITORY: ${{ github.event.sender.login }} "}' ${{ secrets.SLACK_SECRET }}
     
