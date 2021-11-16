@@ -20,7 +20,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-      run: |
+    - run: |
          curl -X POST -H 'Content-type: application/json' --data '{"text":"uspeli smo!"}' ${{ secrets.SLACK_SECRET }}
     
