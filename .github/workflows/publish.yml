@@ -20,5 +20,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: |
-         curl -X POST -H 'Content-type: application/json' --data '{"text":"uspeli smo!"}' ${{ secrets.SLACK_SECRET }}
+         curl -X POST -H 'Content-type: application/json' --data '{"text":"uspeli smo i ovo!"}' ${{ secrets.PROBA2_SECRET }}
     
