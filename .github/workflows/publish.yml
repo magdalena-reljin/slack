@@ -23,7 +23,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: |
-         curl -X POST -H 'Content-type: application/json' --data '{"text":"uspeli smo push! ${{ github.event.actor }} "}' ${{ secrets.SLACK_SECRET }}
+         curl -X POST -H 'Content-type: application/json' --data '{"text":"uspeli smo push! ${{ github.event.actor.login }} "}' ${{ secrets.SLACK_SECRET }}
          
   slackpull:
 
