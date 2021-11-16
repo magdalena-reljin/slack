@@ -23,7 +23,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: |
-         curl -X POST -H 'Content-type: application/json' --data '{"text":"Develop branch updated! REPOSITORY: ${{ github.event.sedner }} "}' ${{ secrets.SLACK_SECRET }}
+         curl -X POST -H 'Content-type: application/json' --data '{"text":"Develop branch updated! REPOSITORY: ${{ github.event.sedner.login }} "}' ${{ secrets.SLACK_SECRET }}
          
   slackpull:
 
