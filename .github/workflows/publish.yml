@@ -4,6 +4,7 @@ on:
   push:
     branches: [ main, develop ]
   pull_request:
+    types: [opened]
     branches: [ main, develop ]
 
 jobs:
@@ -39,5 +40,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: |
-         curl -X POST -H 'Content-type: application/json' --data '{"text":"uspeli smo i pull req!"}' ${{ secrets.SLACK_SECRET }}
+         curl -X POST -H 'Content-type: application/json' --data '{"text":"New pull request. Repository: ${{ github.event.actor }} "}' ${{ secrets.SLACK_SECRET }}
     
