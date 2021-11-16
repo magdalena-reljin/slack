@@ -1,11 +1,11 @@
-name: Node.js CI
+name: Slack notifications
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ develop ]
   pull_request:
     types: [opened]
-    branches: [ main, develop ]
+    branches: [ develop ]
 
 jobs:
   slackpush:
