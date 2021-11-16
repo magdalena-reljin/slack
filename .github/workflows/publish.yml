@@ -2,10 +2,10 @@ name: Slack notifications
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ main, develop ]
   pull_request:
     types: [opened]
-    branches: [ develop ]
+    branches: [ main, develop ]
 
 jobs:
   slackpush:
