@@ -1,34 +1,45 @@
-name: Packaging Integration Library
+name: Nuget package
 
 on:
   push:
-   branches: [ main ]
-   tags:
-    - "v[0-9]+.[0-9]+.[0-9]+"
+    branches: [ main ]
+    tags:
+      - 'v*'
 
 env:
- PROJECT-DLL : 'Pharmacy/Pharmacy.csproj'
+  PROJECT-DLL-PATH : 'PharmacyLibrary/PharmacyLibrary.csproj'
+  OUTPUT-DLL-DIR : 'https://nuget.pkg.github.com/Dajana11-99/index.json'
+  NUGET-SOURCE-URL : 'https://api.nuget.org/slack/index.json'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
+  deploy:
+    name: 'Deploy'
+    runs-on : ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Set VERSION variable from tag
-      run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
-    - name: Clean
-      run: dotnet clean ${{ env.PROJECT-DLL }} && dotnet nuget locals all --clear
-    - name: Restore dependencies
-      run: nuget restore ${{ env.PROJECT-DLL }}
-    - name: Build
-      run: dotnet build ${{ env.PROJECT-DLL }} --configuration Release /p:Version=${VERSION}
-    - name: Test
-      run: dotnet test ${{ env.PROJECT-DLL }} --configuration Release /p:Version=${VERSION} --no-build
-    - name: Pack
-      run: dotnet pack ${{ env.PROJECT-DLL }} --configuration Release /p:Version=${VERSION} --no-build --output .
-    - name: Push
-      run: dotnet nuget push NuGet.PharmacyLibrary.${VERSION}.nupkg --source https://nuget.pkg.github.com/slack/index.json --api-key ${GITHUB_TOKEN}
-      env:
-        GITHUB_TOKEN: ${{ secrets.DAJANAS_TOKEN }}  
+      - name : Pulling repository to the VM
+        uses : actions/checkout@v2
+      
+      - name : Installing the dotnet tool
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-verison: '5.0.x'
+
+      - name : Restore and build packages
+        id : build-results
+        run : dotnet build ${{ env.PROJECT-DLL-PATH }} --configuration Release
+        
+      - name : Determining the version
+        id : get_version
+        uses : battila7/get-version-action@v2
+
+      - name : Found version
+        run: |
+          echo ${{ steps.get_version.outputs.version }}
+          echo ${{ steps.get_version.outputs.version-without-v }}
+      
+
+      - name : Packaging the dll
+        run: dotnet pack ${{ env.PROJECT-DLL-PATH }} --no-restore --no-build --configuration Release --include-symbols -p:PackageVersion=${{steps.get_version.outputs.version-without-v}}  --output ${{ env.OUTPUT-DLL-DIR }}
+
+      - name : Pushing to nuget repository
+        run: dotnet nuget push ${{ env.OUTPUT-DLL-DIR }}/*.nupkg -k ${{ secrets.DAJANAS_TOKEN }} -s ${{ env.NUGET-SOURCE-URL }}
