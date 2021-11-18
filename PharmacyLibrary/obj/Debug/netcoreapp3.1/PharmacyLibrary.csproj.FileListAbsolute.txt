@@ -1,0 +1,13 @@
+C:\Users\dajan\OneDrive\Desktop\SLACKK\slack\PharmacyLibrary\bin\Debug\netcoreapp3.1\PharmacyLibrary.deps.json
+C:\Users\dajan\OneDrive\Desktop\SLACKK\slack\PharmacyLibrary\bin\Debug\netcoreapp3.1\PharmacyLibrary.runtimeconfig.json
+C:\Users\dajan\OneDrive\Desktop\SLACKK\slack\PharmacyLibrary\bin\Debug\netcoreapp3.1\PharmacyLibrary.runtimeconfig.dev.json
+C:\Users\dajan\OneDrive\Desktop\SLACKK\slack\PharmacyLibrary\bin\Debug\netcoreapp3.1\PharmacyLibrary.dll
+C:\Users\dajan\OneDrive\Desktop\SLACKK\slack\PharmacyLibrary\bin\Debug\netcoreapp3.1\PharmacyLibrary.pdb
+C:\Users\dajan\OneDrive\Desktop\SLACKK\slack\PharmacyLibrary\obj\Debug\netcoreapp3.1\PharmacyLibrary.csprojAssemblyReference.cache
+C:\Users\dajan\OneDrive\Desktop\SLACKK\slack\PharmacyLibrary\obj\Debug\netcoreapp3.1\PharmacyLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dajan\OneDrive\Desktop\SLACKK\slack\PharmacyLibrary\obj\Debug\netcoreapp3.1\PharmacyLibrary.AssemblyInfoInputs.cache
+C:\Users\dajan\OneDrive\Desktop\SLACKK\slack\PharmacyLibrary\obj\Debug\netcoreapp3.1\PharmacyLibrary.AssemblyInfo.cs
+C:\Users\dajan\OneDrive\Desktop\SLACKK\slack\PharmacyLibrary\obj\Debug\netcoreapp3.1\PharmacyLibrary.csproj.CoreCompileInputs.cache
+C:\Users\dajan\OneDrive\Desktop\SLACKK\slack\PharmacyLibrary\obj\Debug\netcoreapp3.1\PharmacyLibrary.dll
+C:\Users\dajan\OneDrive\Desktop\SLACKK\slack\PharmacyLibrary\obj\Debug\netcoreapp3.1\PharmacyLibrary.pdb
+C:\Users\dajan\OneDrive\Desktop\SLACKK\slack\PharmacyLibrary\obj\Debug\netcoreapp3.1\PharmacyLibrary.genruntimeconfig.cache
