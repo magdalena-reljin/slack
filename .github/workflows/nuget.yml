@@ -8,6 +8,7 @@ on:
 env:
  PROJECT-DLL : 'PharmacyLibrary/PharmacyLibrary.csproj'
  GITHUB_TOKEN:    '${{ secrets.DAJANAS_TOKEN }}'  
+ OUTPUT-DLL-DIR : '${{ github.workspace }}\output'
 
 jobs:
   build:
@@ -27,8 +28,8 @@ jobs:
     - name: Test
       run: dotnet test ${{ env.PROJECT-DLL }} --configuration Release /p:Version=${VERSION} --no-build
     - name: Pack
-      run: dotnet pack ${{ env.PROJECT-DLL }} --configuration Release /p:Version=${VERSION} --no-build --output .
+      run: dotnet pack ${{ env.PROJECT-DLL }} --configuration Release /p:Version=${VERSION} --no-build sss --output ${{ env.OUTPUT-DLL-DIR }}
     - name: Push
-      run: dotnet nuget push bin/Release/PharmacyLibrary.${VERSION}.nupkg --source https://nuget.pkg.github.com/slack/index.json --api-key ${GITHUB_TOKEN}
+      run: dotnet nuget push ${{ env.OUTPUT-DLL-DIR }}.${VERSION}.nupkg --source https://nuget.pkg.github.com/slack/index.json --api-key ${GITHUB_TOKEN}
  
        
