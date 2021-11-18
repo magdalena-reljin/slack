@@ -30,4 +30,4 @@ jobs:
     - name: Push
       run: dotnet nuget push NuGet.PharmacyLibrary.${VERSION}.nupkg --source https://nuget.pkg.github.com/slack/index.json --api-key ${GITHUB_TOKEN}
       env:
-        GITHUB_TOKEN: ${{ secrets.DAJANAS_TOKEN }}  
+        GITHUB_TOKEN: ${{ secrets.PACKAGE_TOKEN }}  
