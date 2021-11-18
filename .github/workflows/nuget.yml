@@ -1,0 +1,45 @@
+name: Nuget package
+
+on:
+  push:
+    branches: 
+    	[main,development]
+    tags:
+      - 'v**-beta'
+
+env:
+  PROJECT-DLL-PATH : 'slack/PharmacyLibrary/PharmacyLibrary.csproj'
+  OUTPUT-DLL-DIR : '${{ github.workspace }}\output'
+  NUGET-SOURCE-URL : 'https://api.nuget.org/v3/index.json'
+
+jobs:
+  deploy:
+    name: 'Deploy'
+    runs-on : ubuntu-latest
+    steps:
+      - name : Pulling repository to the VM
+        uses : actions/checkout@v2
+      
+      - name : Installing the dotnet tool
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-verison: '5.0.x'
+
+      - name : Restore and build packages
+        id : build-results
+        run : dotnet build ${{ env.PROJECT-DLL-PATH }} --configuration Release
+
+      - name : Determining the version
+        id : get_version
+        uses : battila7/get-version-action@v2
+
+      - name : Found version
+        run: |
+          echo ${{ steps.get_version.outputs.version }}
+          echo ${{ steps.get_version.outputs.version-without-v }}
+      
+      - name : Packaging the dll
+        run: dotnet pack ${{ env.PROJECT-DLL-PATH }} --no-restore --no-build --configuration Release  -p:PackageVersion=${{steps.get_version.outputs.version-without-v}} --output ${{ env.OUTPUT-DLL-DIR }}
+
+      - name : Pushing to nuget repository
+        run: dotnet nuget push ${{ env.OUTPUT-DLL-DIR }}/*.nupkg -k ${{ secrets.DAJANAS_TOKEN }} -s ${{ env.NUGET-SOURCE-URL }}
