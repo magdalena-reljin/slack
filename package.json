@@ -25,8 +25,8 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "psw_drugstore",
-  "author": "simin161",
+  "name": "ceca-dragstor-savulja",
+  "author": "magdalenaRA822018",
   "devDependencies": {
     "@size-limit/preset-small-lib": "^6.0.4",
     "husky": "^7.0.4",
@@ -38,6 +38,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pswFirma6/drugstore.git"
+    "url": "https://github.com/magdalenaRA822018/slack.git"
   }
 }
