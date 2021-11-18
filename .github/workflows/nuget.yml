@@ -30,7 +30,7 @@ jobs:
         
       - name : Determining the version
         id : get_version
-        uses : Dajana11-99/get-version-action@v2
+        uses : battila7/get-version-action@v2
 
       - name : Found version
         run: |
