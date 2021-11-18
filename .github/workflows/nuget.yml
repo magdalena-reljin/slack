@@ -9,6 +9,7 @@ env:
  PROJECT-DLL : 'PharmacyLibrary/PharmacyLibrary.csproj'
  GITHUB_TOKEN:    '${{ secrets.DAJANAS_TOKEN }}'  
  OUTPUT-DLL-DIR : '${{ github.workspace }}\output'
+ NUGET-SOURCE-URL : 'https://api.nuget.org/v3/index.json'
 
 jobs:
   build:
@@ -30,5 +31,5 @@ jobs:
     - name: Pack
       run: dotnet pack ${{ env.PROJECT-DLL }} --configuration Release /p:Version=${VERSION} --no-build --output ${{ env.OUTPUT-DLL-DIR }}
     - name: Push
-      run: dotnet nuget push ${{ env.OUTPUT-DLL-DIR }}.${VERSION}.nupkg --source https://nuget.pkg.github.com/slack/index.json --api-key ${GITHUB_TOKEN}
+      run: dotnet nuget push PharmacyLibrary.${VERSION}.nupkg --api-key ${GITHUB_TOKEN} --source https://nuget.pkg.github.com/slack/index.json 
  
