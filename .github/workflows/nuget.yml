@@ -32,14 +32,11 @@ jobs:
         id : get_version
         uses : battila7/get-version-action@v2
 
-      - name : Found version
-        run: |
-          echo ${{ steps.get_version.outputs.version }}
-          echo ${{ steps.get_version.outputs.version-without-v }}
+
       
 
       - name : Packaging the dll
-        run: dotnet pack ${{ env.PROJECT-DLL-PATH }} --no-restore --no-build --configuration Release --include-symbols -p:PackageVersion=${{steps.get_version.outputs.version-without-v}}  --output ${{ env.OUTPUT-DLL-DIR }}
+        run: dotnet pack ${{ env.PROJECT-DLL-PATH }} --no-restore --no-build --configuration Release --include-symbols   --output ${{ env.OUTPUT-DLL-DIR }}
 
       - name : Pushing to nuget repository
         run: dotnet nuget push ${{ env.OUTPUT-DLL-DIR }}/*.nupkg -k ${{ secrets.DAJANAS_TOKEN }} -s ${{ env.NUGET-SOURCE-URL }}
