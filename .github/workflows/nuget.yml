@@ -7,7 +7,7 @@ on:
       - 'v**-beta'
 
 env:
-  PROJECT-DLL-PATH : 'slack/PharmacyLibrary/PharmacyLibrary.csproj'
+  PROJECT-DLL-PATH : 'PharmacyLibrary/PharmacyLibrary.csproj'
   OUTPUT-DLL-DIR : '${{ github.workspace }}\output'
   NUGET-SOURCE-URL : 'https://api.nuget.org/v3/index.json'
 
