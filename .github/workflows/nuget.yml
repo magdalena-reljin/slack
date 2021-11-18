@@ -2,12 +2,7 @@ name: Automated deployment of hospital nuget
 
 on:
   push:
-    branches: 
-      - '!integration/integration'
-      - '!feature/**'
-      - '!bugfix/**'
-      - '!main'
-      - '!development'
+    branches: [ main ]
     tags:
       - 'v**-snapshot'
 
