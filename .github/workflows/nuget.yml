@@ -29,7 +29,7 @@ jobs:
         run : dotnet build ${{ env.PROJECT-DLL-PATH }} --configuration Release
 
       - name : Packaging the dll
-        run: dotnet pack ${{ env.PROJECT-DLL-PATH }} --no-restore --no-build --configuration Release  } --output ${{ env.OUTPUT-DLL-DIR }}
+        run: dotnet pack ${{ env.PROJECT-DLL-PATH }} --no-restore --no-build --configuration Release  --output ${{ env.OUTPUT-DLL-DIR }}
 
       - name : Pushing to nuget repository
         run: dotnet nuget push ${{ env.OUTPUT-DLL-DIR }}/*.nupkg -k ${{ secrets.DAJANAS_TOKEN }} -s ${{ env.NUGET-SOURCE-URL }}
