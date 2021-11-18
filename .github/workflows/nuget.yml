@@ -8,7 +8,7 @@ on:
 env:
  PROJECT-DLL : 'PharmacyLibrary/PharmacyLibrary.csproj'
  OUTPUT-DLL-DIR : '${{ github.workspace }}
- GITHUB_TOKEN: ${{ secrets.DAJANAS_TOKEN }}  
+ GITHUB_TOKEN:    '${{ secrets.DAJANAS_TOKEN }}'  
 
 jobs:
   build:
