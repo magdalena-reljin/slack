@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
     tags:
-      - 'v**-beta'
+      - 'v**-snapshot'
 
 env:
   PROJECT-DLL-PATH : 'PharmacyLibrary/PharmacyLibrary.csproj'
