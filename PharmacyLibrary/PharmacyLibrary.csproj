@@ -2,14 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-	  <OutputType>Exe</OutputType>
-	  <TargetFramework>netcoreapp3.1</TargetFramework>
-	  <PackageId>YourProjectName</PackageId>
-	  <Version>1.0.0</Version>
-	  <Authors>Author Name</Authors>
-	  <Company>CompanyName</Company>
-	  <PackageDescription>This package adds a YourProjectName</PackageDescription>
-	  <RepositoryUrl>https://github.com/magdalenaRA822018/slack/</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
