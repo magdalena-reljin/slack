@@ -3,7 +3,7 @@ name: Nuget package
 on:
   push:
     branches: 
-    	[main,development]
+      	[main]
     tags:
       - 'v**-beta'
 
