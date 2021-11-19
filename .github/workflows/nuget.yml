@@ -30,7 +30,7 @@ jobs:
     - name: Test
       run: dotnet test ${{ env.PROJECT-DLL }} --configuration Release /p:Version=${VERSION} --no-build
     - name: Pack
-      run: dotnet pack ${{ env.PROJECT-DLL }} --configuration Release /p:Version=${VERSION} --no-build --output ${{ env.OUTPUT-DLL-DIR }}
+      run: dotnet pack ${{ env.PROJECT-DLL }} --configuration Release /p:Version=${VERSION} --no-build --output .
     - name: Push
-      run: dotnet nuget push ${{ env.OUTPUT-DLL-DIR }}/*.nupkg --source https://nuget.pkg.github.com/slack/index.json --api-key ${{ secrets.DAVID }}
+      run: dotnet nuget push NuGet.PharmacyLibrary.${VERSION}.nupkg --source https://nuget.pkg.github.com/slack/index.json --api-key ${{ secrets.DAVID }}
     
