@@ -32,5 +32,5 @@ jobs:
     - name: Pack
       run: dotnet pack ${{ env.PROJECT-DLL }} --configuration Release /p:Version=${VERSION} --no-build --output ${{ env.OUTPUT-DLL-DIR }}
     - name: Push
-      run: dotnet nuget push NuGet.PharmacyLibrary.${VERSION}.nupkg --source https://nuget.pkg.github.com/slack/index.json --api-key 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
+      run: dotnet nuget push Pharmacy.${VERSION}.nupkg --source https://nuget.pkg.github.com/slack/index.json --api-key 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
     
