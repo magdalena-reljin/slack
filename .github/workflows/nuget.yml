@@ -8,7 +8,7 @@ on:
 env:
  PROJECT-DLL : 'Pharmacy/Pharmacy.csproj'
  GITHUB_TOKEN:    '${{ secrets.DAJANAS_TOKEN }}'  
- OUTPUT-DLL-DIR : '${{ github.workspace }}\output'
+ OUTPUT-DLL-DIR : '${{ github.workspace }}/output'
  NUGET-SOURCE-URL : 'https://nuget.pkg.github.com/slack/index.json'
 
 
